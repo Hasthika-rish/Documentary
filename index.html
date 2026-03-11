@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guardian Angel’s Care | Special Needs Support</title>
+    <meta name="description"
+        content="Personalized home-based learning support for children with special needs. Empowering every child to reach their full potential.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <!-- Scripts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5',
+                        secondary: '#10B981',
+                        accent: '#F59E0B',
+                        'soft-blue': 'hsl(204, 100%, 96%)',
+                        'soft-green': 'hsl(142, 70%, 97%)',
+                        'soft-yellow': 'hsl(48, 100%, 97%)',
+                    },
+                    fontFamily: {
+                        quicksand: ['Quicksand', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-out forwards',
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle at top right, #E0F2FE, transparent),
+                radial-gradient(circle at bottom left, #DCFCE7, transparent);
+        }
+
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 antialiased overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 z-50 w-full glass px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img src="logo.png" alt="Logo" class="h-12 w-12 object-contain rounded-lg shadow-sm">
+                <span
+                    class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
+                    Guardian Angel’s Care
+                </span>
+            </div>
+            <div class="hidden md:flex space-x-8 font-semibold text-slate-600">
+                <a href="#about" class="hover:text-blue-600 transition-colors">About</a>
+                <a href="#services" class="hover:text-blue-600 transition-colors">Services</a>
+                <a href="#methods" class="hover:text-blue-600 transition-colors">Approach</a>
+                <a href="#contact"
+                    class="bg-blue-600 text-white px-6 py-2.5 rounded-full hover:bg-blue-700 hover:shadow-lg transition-all active:scale-95">Book
+                    Now</a>
+            </div>
+            <!-- Mobile Menu Button (Simple) -->
+            <button class="md:hidden text-slate-600">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center pt-24 pb-16 px-6 hero-gradient overflow-hidden">
+        <div class="absolute top-20 left-10 w-64 h-64 bg-blue-200/30 rounded-full blur-3xl animate-pulse"></div>
+        <div
+            class="absolute bottom-20 right-10 w-96 h-96 bg-green-200/30 rounded-full blur-3xl animate-pulse delay-700">
+        </div>
+
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10 w-full">
+            <div class="animate-slide-up">
+                <span
+                    class="inline-block px-4 py-1.5 bg-blue-100 text-blue-700 rounded-full text-sm font-bold mb-6 tracking-wide">
+                    PERSONALIZED LEARNING SUPPORT
+                </span>
+                <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 mb-6 leading-[1.1]">
+                    Nurturing every child’s <span class="text-blue-600">unique potential</span>
+                </h1>
+                <p class="text-xl text-slate-600 mb-10 max-w-xl leading-relaxed">
+                    Specialized home-based learning support for children with special needs. We bring therapy-inspired
+                    learning to the comfort of your home.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#contact"
+                        class="px-8 py-4 bg-blue-600 text-white rounded-2xl font-bold shadow-xl shadow-blue-200 hover:bg-blue-700 transition-all hover:scale-105 text-center">
+                        Request a Home Visit
+                    </a>
+                    <a href="#services"
+                        class="px-8 py-4 bg-white border-2 border-slate-200 text-slate-700 rounded-2xl font-bold hover:bg-slate-50 transition-all text-center">
+                        Explore Our Services
+                    </a>
+                </div>
+                <div class="mt-12 flex items-center gap-6">
+                    <div class="flex -space-x-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-blue-400 border-2 border-white flex items-center justify-center text-white text-xs font-bold">
+                            JD</div>
+                        <div
+                            class="w-10 h-10 rounded-full bg-green-400 border-2 border-white flex items-center justify-center text-white text-xs font-bold">
+                            AM</div>
+                        <div
+                            class="w-10 h-10 rounded-full bg-yellow-400 border-2 border-white flex items-center justify-center text-white text-xs font-bold">
+                            SK</div>
+                    </div>
+                    <p class="text-sm font-medium text-slate-500">Trusted by local families</p>
+                </div>
+            </div>
+            <div class="relative animate-fade-in delay-300 hidden lg:block">
+                <div class="relative z-10 p-8 glass rounded-[3rem] shadow-2xl border-white/50">
+                    <img src="hero.png" alt="Special Needs Support Session"
+                        class="w-full h-auto rounded-3xl animate-float">
+                </div>
+                <!-- Decorative elements -->
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-yellow-300/20 rounded-full blur-2xl"></div>
+                <div class="absolute -bottom-10 -left-10 w-48 h-48 bg-purple-300/20 rounded-full blur-3xl"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Quick Stats / Benefits -->
+    <section class="py-12 px-6">
+        <div
+            class="max-w-7xl mx-auto bg-white rounded-[2.5rem] p-10 shadow-sm border border-slate-100 grid md:grid-cols-3 gap-8">
+            <div class="flex items-center gap-4 p-4">
+                <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 text-3xl">🏠
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg leading-tight">Home-Based</h3>
+                    <p class="text-sm text-slate-500">Comfortable familiar environment</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4 p-4">
+                <div class="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center text-green-600 text-3xl">
+                    🌟</div>
+                <div>
+                    <h3 class="font-bold text-lg leading-tight">One-on-One</h3>
+                    <p class="text-sm text-slate-500">100% Focused attention</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4 p-4">
+                <div
+                    class="w-16 h-16 bg-yellow-50 rounded-2xl flex items-center justify-center text-yellow-600 text-3xl">
+                    🎓</div>
+                <div>
+                    <h3 class="font-bold text-lg leading-tight">Qualified</h3>
+                    <p class="text-sm text-slate-500">ECD Specialized Professional</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6 overflow-hidden">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div class="order-2 md:order-1">
+                <div
+                    class="inline-block p-2 bg-indigo-50 text-indigo-600 rounded-lg font-bold text-sm mb-4 uppercase tracking-wider">
+                    Meet Your Coach</div>
+                <h2 class="text-4xl font-bold text-slate-900 mb-8 leading-tight">Dedicated to every child's success.
+                </h2>
+                <div class="space-y-6 text-lg text-slate-600 mb-10">
+                    <p>As a qualified preschool teacher with a focus on <strong class="text-slate-900">Early Childhood
+                            Development</strong>, I believe that every child has a unique light and learns at their own
+                        pace.</p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3">
+                            <span
+                                class="w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xs">✓</span>
+                            <span>Diploma in Early Childhood Development</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span
+                                class="w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xs">✓</span>
+                            <span>Daycare Specialist Certificate</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span
+                                class="w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xs">✓</span>
+                            <span>Certified Special Needs Training</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="p-6 bg-slate-900 rounded-3xl relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700">
+                    </div>
+                    <p class="text-2xl font-bold text-white italic relative z-10 leading-relaxed">
+                        "Helping every child learn at their own pace with dignity and joy."
+                    </p>
+                </div>
+            </div>
+            <div class="order-1 md:order-2">
+                <div class="relative">
+                    <div class="absolute inset-0 bg-blue-600 rounded-[3rem] rotate-3 -z-10 opacity-10"></div>
+                    <div
+                        class="aspect-square bg-blue-100 rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white">
+                        <img src="about.jpg" alt="Coach Profile" class="w-full h-full object-cover">
+                    </div>
+                    <!-- Badge -->
+                    <div
+                        class="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl flex items-center gap-4 border border-slate-50">
+                        <div class="w-14 h-14 bg-yellow-400 rounded-xl flex items-center justify-center text-2xl">🏆
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold text-slate-400 uppercase">Certified</p>
+                            <p class="font-bold text-slate-900">ECD Professional</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 px-6 bg-slate-50 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20 max-w-2xl mx-auto">
+                <h2 class="text-4xl font-bold text-slate-900 mb-6">How I Support Your Child</h2>
+                <p class="text-lg text-slate-600">Tailored approaches designed to meet the specific developmental
+                    milestones of your little one.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="card-hover bg-white p-10 rounded-[2.5rem] border border-slate-100 group">
+                    <div
+                        class="w-20 h-20 bg-blue-50 text-blue-600 rounded-3xl flex items-center justify-center text-4xl mb-8 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-500">
+                        🏠</div>
+                    <h3 class="text-2xl font-bold mb-4">Home Visits</h3>
+                    <p class="text-slate-500 leading-relaxed mb-6">Personalized one-to-one learning support in the
+                        comfort of your child's natural environment where they feel safest.</p>
+                    <a href="#contact"
+                        class="text-blue-600 font-bold flex items-center gap-2 hover:gap-3 transition-all">Learn more
+                        <span>→</span></a>
+                </div>
+                <!-- Card 2 -->
+                <div class="card-hover bg-white p-10 rounded-[2.5rem] border border-slate-100 group">
+                    <div
+                        class="w-20 h-20 bg-green-50 text-green-600 rounded-3xl flex items-center justify-center text-4xl mb-8 group-hover:bg-green-600 group-hover:text-white transition-colors duration-500">
+                        🧩</div>
+                    <h3 class="text-2xl font-bold mb-4">Skill Building</h3>
+                    <p class="text-slate-500 leading-relaxed mb-6">Focusing on fine and gross motor skills, cognitive
+                        development, and meaningful social interaction routines.</p>
+                    <a href="#contact"
+                        class="text-green-600 font-bold flex items-center gap-2 hover:gap-3 transition-all">Learn more
+                        <span>→</span></a>
+                </div>
+                <!-- Card 3 -->
+                <div class="card-hover bg-white p-10 rounded-[2.5rem] border border-slate-100 group">
+                    <div
+                        class="w-20 h-20 bg-yellow-50 text-yellow-600 rounded-3xl flex items-center justify-center text-4xl mb-8 group-hover:bg-yellow-600 group-hover:text-white transition-colors duration-500">
+                        🤝</div>
+                    <h3 class="text-2xl font-bold mb-4">Parent Coaching</h3>
+                    <p class="text-slate-500 leading-relaxed mb-6">Empowering parents with actionable home activity
+                        plans, emotional support, and evidence-based strategies.</p>
+                    <a href="#contact"
+                        class="text-yellow-600 font-bold flex items-center gap-2 hover:gap-3 transition-all">Learn more
+                        <span>→</span></a>
+                </div>
+            </div>
+
+            <!-- Focus Areas -->
+            <div class="mt-24 p-12 bg-white rounded-[3rem] shadow-sm border border-slate-100">
+                <h3 class="text-2xl font-bold text-center mb-10 text-slate-800">Specialized Support Areas</h3>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <span
+                        class="px-8 py-3 bg-blue-50 text-blue-700 rounded-2xl font-bold hover:bg-blue-600 hover:text-white transition-colors cursor-default border border-blue-100">Autism
+                        Spectrum (ASD)</span>
+                    <span
+                        class="px-8 py-3 bg-emerald-50 text-emerald-700 rounded-2xl font-bold hover:bg-emerald-600 hover:text-white transition-colors cursor-default border border-emerald-100">Speech
+                        & Language Delay</span>
+                    <span
+                        class="px-8 py-3 bg-amber-50 text-amber-700 rounded-2xl font-bold hover:bg-amber-600 hover:text-white transition-colors cursor-default border border-amber-100">Global
+                        Developmental Delay</span>
+                    <span
+                        class="px-8 py-3 bg-purple-50 text-purple-700 rounded-2xl font-bold hover:bg-purple-600 hover:text-white transition-colors cursor-default border border-purple-100">Learning
+                        Difficulties</span>
+                    <span
+                        class="px-8 py-3 bg-rose-50 text-rose-700 rounded-2xl font-bold hover:bg-rose-600 hover:text-white transition-colors cursor-default border border-rose-100">Attention
+                        Focus (ADHD)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methods Section -->
+    <section id="methods" class="py-24 px-6 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-blue-600 opacity-[0.02] rounded-l-[10rem]"></div>
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <span class="text-sm font-bold text-blue-600 uppercase tracking-[0.2em] mb-4 block">Our Process</span>
+            <h2 class="text-5xl font-extrabold text-slate-900 mb-12">The Teaching Approach</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">
+                <div class="space-y-4 p-8 glass rounded-3xl group hover:bg-blue-600 transition-all duration-500">
+                    <div class="text-5xl group-hover:scale-110 transition-transform">🎨</div>
+                    <p class="font-bold text-slate-700 group-hover:text-white">Play-Based</p>
+                </div>
+                <div class="space-y-4 p-8 glass rounded-3xl group hover:bg-green-600 transition-all duration-500">
+                    <div class="text-5xl group-hover:scale-110 transition-transform">🖐️</div>
+                    <p class="font-bold text-slate-700 group-hover:text-white">Sensory Focus</p>
+                </div>
+                <div class="space-y-4 p-8 glass rounded-3xl group hover:bg-amber-600 transition-all duration-500">
+                    <div class="text-5xl group-hover:scale-110 transition-transform">👁️</div>
+                    <p class="font-bold text-slate-700 group-hover:text-white">Visual Tools</p>
+                </div>
+                <div class="space-y-4 p-8 glass rounded-3xl group hover:bg-indigo-600 transition-all duration-500">
+                    <div class="text-5xl group-hover:scale-110 transition-transform">💬</div>
+                    <p class="font-bold text-slate-700 group-hover:text-white">Behavioral</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6 bg-slate-100">
+        <div
+            class="max-w-5xl mx-auto grid md:grid-cols-5 gap-0 rounded-[3rem] overflow-hidden shadow-2xl bg-white border border-white">
+            <div class="md:col-span-2 bg-blue-600 p-12 text-white flex flex-col justify-between">
+                <div>
+                    <h2 class="text-4xl font-bold mb-6">Let's connect</h2>
+                    <p class="text-blue-100 text-lg mb-10 leading-relaxed">
+                        Ready to start your child’s journey? Provide your details and I’ll reach out for a free
+                        consultation.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-xl">📍
+                            </div>
+                            <p>Available for Home Visits</p>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-xl">🕒
+                            </div>
+                            <p>Flexible Scheduling</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-12 pt-12 border-t border-white/20">
+                    <div class="flex items-center gap-3">
+                        <img src="logo.png" alt="Logo White" class="h-10 w-10 brightness-0 invert opacity-50">
+                        <span class="font-bold tracking-widest opacity-50 uppercase text-xs">Guardian Angel's
+                            Care</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="md:col-span-3 p-12">
+                <form id="bookingForm" class="space-y-6">
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="block text-sm font-bold text-slate-700">Parent Name</label>
+                            <input type="text" id="parentName" required placeholder="John Doe"
+                                class="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 focus:ring-2 focus:ring-blue-400 focus:bg-white outline-none transition-all">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-sm font-bold text-slate-700">Phone Number</label>
+                            <input type="tel" id="phone" required placeholder="+1 (234) 567 890"
+                                class="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 focus:ring-2 focus:ring-blue-400 focus:bg-white outline-none transition-all">
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-sm font-bold text-slate-700">Service Location (Area)</label>
+                        <input type="text" id="location" required placeholder="Your city or neighborhood"
+                            class="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 focus:ring-2 focus:ring-blue-400 focus:bg-white outline-none transition-all">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-sm font-bold text-slate-700">Nature of Inquiry</label>
+                        <textarea id="message" rows="4" placeholder="Tell me a bit about your child’s needs..."
+                            class="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 focus:ring-2 focus:ring-blue-400 focus:bg-white outline-none transition-all"></textarea>
+                    </div>
+                    <button type="submit"
+                        class="w-full bg-blue-600 text-white py-5 rounded-2xl font-bold text-lg hover:bg-blue-700 shadow-xl shadow-blue-100 hover:shadow-blue-200 hover:-translate-y-1 transition-all active:scale-95">
+                        Submit Booking Request
+                    </button>
+                </form>
+
+                <div id="successMsg" class="hidden animate-fade-in text-center py-12">
+                    <div
+                        class="w-24 h-24 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-5xl mx-auto mb-6">
+                        ✓</div>
+                    <h3 class="text-3xl font-bold text-slate-900 mb-2">Request Received!</h3>
+                    <p class="text-slate-500">I will reach out to you within 24 hours to schedule a consultation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 px-6 bg-white border-t border-slate-100">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex items-center gap-3">
+                <img src="logo.png" alt="Logo" class="h-10 w-10 opacity-60">
+                <span class="font-bold text-slate-400">Guardian Angel’s Care</span>
+            </div>
+            <p class="text-slate-400 text-sm">© 2026 Guardian Angel’s Care. Helping children shine since 2020.</p>
+            <div class="flex gap-6">
+                <!-- Simple social icons or links -->
+                <a href="#"
+                    class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 hover:bg-blue-50 hover:text-blue-600 transition-colors">f</a>
+                <a href="#"
+                    class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 hover:bg-pink-50 hover:text-pink-600 transition-colors">ig</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Define Database
+        const db = new Dexie("GuardianAngelDB");
+        db.version(1).stores({
+            bookings: '++id, parentName, phone, location, message, date'
+        });
+
+        const bookingForm = document.getElementById('bookingForm');
+        const successMsg = document.getElementById('successMsg');
+
+        bookingForm.onsubmit = async (e) => {
+            e.preventDefault();
+
+            // Get form data
+            const parentName = document.getElementById('parentName').value;
+            const phone = document.getElementById('phone').value;
+            const location = document.getElementById('location').value;
+            const message = document.getElementById('message').value;
+
+            // Save to Dexie
+            try {
+                await db.bookings.add({
+                    parentName,
+                    phone,
+                    location,
+                    message,
+                    date: new Date().toISOString()
+                });
+
+                // UI Feedback
+                bookingForm.classList.add('hidden');
+                successMsg.classList.remove('hidden');
+
+                console.log("Form saved to browser database!");
+            } catch (err) {
+                console.error("Failed to save booking:", err);
+                alert("Something went wrong. Please try again.");
+            }
+        };
+
+        // Simple Fade-in effect on scroll
+        const observeElements = () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-slide-up');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('section > div').forEach(el => observer.observe(el));
+        };
+
+        window.addEventListener('load', observeElements);
+    </script>
+</body>
+
+</html>
